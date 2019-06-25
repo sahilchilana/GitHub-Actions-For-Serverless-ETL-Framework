@@ -9,6 +9,7 @@ LABEL com.github.actions.description="Action that enables building and testing o
 LABEL com.github.actions.icon="package"
 LABEL com.github.actions.color="blue"
 RUN apt-get install python
+RUN pip install requests
 COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
