@@ -1,3 +1,2 @@
 #!/bin/bash
-echo "Hello World"
-python hello.py
+python requests_github.py
