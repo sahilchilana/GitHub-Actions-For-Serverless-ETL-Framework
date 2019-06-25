@@ -1,2 +1,2 @@
 #!/bin/bash
-python requests_github.py
+cat $GITHUB_EVENT_PATH
