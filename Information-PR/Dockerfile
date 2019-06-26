@@ -11,7 +11,6 @@ LABEL com.github.actions.color="blue"
 RUN apt-get install python
 RUN pip install requests
 RUN pip install PyYAML
-RUN touch test_template.yaml
 COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
