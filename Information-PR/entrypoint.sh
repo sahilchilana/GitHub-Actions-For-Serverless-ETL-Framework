@@ -9,4 +9,5 @@ git checkout develop
 python send_email.py
 python requests_github.py
 sam validate --template /github/workspace/test_template.yaml
+sam build && sam local invoke
 echo "Success!!!"
