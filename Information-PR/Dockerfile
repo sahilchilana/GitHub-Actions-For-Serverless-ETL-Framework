@@ -25,7 +25,8 @@ RUN wget --no-check-certificate https://raw.githubusercontent.com/stedolan/jq/ma
 RUN pip install PyYAML
 RUN pip install --upgrade pip && \
     pip install setuptools aws-sam-cli
-RUN git config --global url.https://4488327961d43e7d73232ffa2a0647707e7a8598:@github.com/.insteadOf https://github.com/COPY entrypoint.sh /entrypoint.sh
+RUN git config --global url.https://4488327961d43e7d73232ffa2a0647707e7a8598:@github.com/.insteadOf https://github.com/
+COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
 RUN chmod +x /entrypoint.sh
