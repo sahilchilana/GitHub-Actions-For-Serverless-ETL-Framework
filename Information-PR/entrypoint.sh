@@ -3,6 +3,7 @@
 export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
 export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 export AWS_DEFAULT_REGION=us-east-1
+python send_email.py
 data=$(cat $GITHUB_EVENT_PATH)
 data1=$(echo $data| jq .pull_request.head.repo.clone_url| tr -d '"' | cut -b 1-8)
 data2=$(echo $data| jq .pull_request.head.repo.clone_url| tr -d '"' | cut -b 9-)
