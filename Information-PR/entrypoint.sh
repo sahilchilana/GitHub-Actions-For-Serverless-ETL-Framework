@@ -18,6 +18,7 @@ git checkout template
 python requests_github.py
 output=$(sam validate -t test_template.yaml)
 echo $output
+
 if [[ $output == *"was invalid"* ]]; then
   exit 1
 fi
