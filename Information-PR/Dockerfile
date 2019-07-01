@@ -10,6 +10,7 @@ LABEL com.github.actions.icon="package"
 LABEL com.github.actions.color="blue"
 RUN apt-get install python
 RUN pip install requests
+RUN pip install cfn_flip
 ENV JQ_VERSION='1.5'
 
 RUN wget --no-check-certificate https://raw.githubusercontent.com/stedolan/jq/master/sig/jq-release.key -O /tmp/jq-release.key && \
