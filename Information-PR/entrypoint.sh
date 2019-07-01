@@ -10,4 +10,20 @@ data=$data1'sahilchilana:'$PASSWORD_GITHUB'@'$data2
 git clone $data forked-repo
 cd forked-repo
 git checkout template
-ls
+python requests_github.py
+sam validate -t test_template.yaml
+sam package --template-file test_template.yaml --output-template-file out.yml --s3-bucket serverlessetlframeworktestbucket
+sam deploy --stack-name serverlessetlframeworkteststack --capablities CAPABLITY_IAM --template-file out.yml
+execution_name=$(date)
+execution_name=(${execution_name// /_})
+execution_name=(${execution_name//:/-})
+arn_value=$(aws cloudformation describe-stack-resources --stack-name serverlessetlframeworkteststack)
+arn_value=$(echo $arn_value |jq '.StackResources[] | select(.ResourceType == "AWS::StepFunctions::StateMachine").PhysicalResourceId' | tr -d '"')
+execution_arn=$(aws stepfunctions start-execution --state-machine $arn_value --name $execution_name --input "{\"number1\":10, \"number2\":20}"| jq .executionArn | tr -d '"')
+sleep 10s
+outpt=$(aws stepfunctions describe-execution --execution-arn $execution_arn)
+output=$(echo $output| jq .status| tr -d '"')
+echo "Output='$output'"
+if [ "$output" == "SUCCEEDED" ]; then
+echo "Test Passed"
+fi
