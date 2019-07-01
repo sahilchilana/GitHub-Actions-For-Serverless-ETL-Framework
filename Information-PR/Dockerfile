@@ -10,6 +10,7 @@ LABEL com.github.actions.icon="package"
 LABEL com.github.actions.color="blue"
 RUN apt-get install python
 RUN pip install requests
+RUN apt-get install jq
 RUN pip install PyYAML
 RUN pip install --upgrade pip && \
     pip install setuptools aws-sam-cli
