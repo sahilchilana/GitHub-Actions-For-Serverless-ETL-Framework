@@ -30,6 +30,8 @@ output=$(echo $output| jq .status| tr -d '"')
 echo "Output='$output'"
 if [ "$output" == "SUCCEEDED" ]; then
   echo "Test Passed"
+  python send_email.py $output
 if [ "$output" == "FAILED" ]; then
   echo "Test Failed"
+  python send_email.py $output
 fi
