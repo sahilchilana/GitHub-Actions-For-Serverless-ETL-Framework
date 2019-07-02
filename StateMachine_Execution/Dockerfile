@@ -11,6 +11,7 @@ LABEL com.github.actions.color="blue"
 RUN apt-get install python
 RUN pip install --upgrade pip && \
     pip install setuptools aws-sam-cli
+RUN pip install awscli --upgrade
 COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
