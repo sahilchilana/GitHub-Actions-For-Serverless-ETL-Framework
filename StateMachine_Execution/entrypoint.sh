@@ -17,15 +17,15 @@ sleep 30s
 
 output=$(aws stepfunctions describe-execution --execution-arn $execution_arn)
 echo $output
-# output=$(echo $output| jq .status| tr -d '"')
+output=$(echo $output| jq .status| tr -d '"')
 
-# echo "Output='$output'"
-# if [ "$output" == "SUCCEEDED" ]; then
-#   echo "Test Passed"
-#   python send_email.py $output
+echo "Output='$output'"
+if [ "$output" == "SUCCEEDED" ]; then
+  echo "Test Passed"
+  python send_email.py $output
 
-# else
-#   echo "Test Failed"
-#   python send_email.py $output
+else
+  echo "Test Failed"
+  python send_email.py $output
 
-# fi
+fi
