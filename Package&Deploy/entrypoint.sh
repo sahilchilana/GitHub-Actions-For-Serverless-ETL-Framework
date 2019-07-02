@@ -24,4 +24,4 @@ if [[ $output == *"was invalid"* ]]; then
 fi
 
 sam package --template-file test_template.yaml --output-template-file out.yml --s3-bucket serverlessetlframeworktestbucket
-sam deploy --stack-name serverlessetlframeworkteststack5 --capabilities CAPABILITY_IAM --template-file out.yml
+sam deploy --stack-name serverlessetlframeworkteststack6 --capabilities CAPABILITY_IAM --template-file out.yml
