@@ -8,7 +8,7 @@ execution_name=$(date)
 execution_name=(${execution_name// /_})
 execution_name=(${execution_name//:/-})
 
-arn_value=$(aws cloudformation describe-stack-resources --stack-name serverlessetlframeworkteststack5)
+arn_value=$(aws cloudformation describe-stack-resources --stack-name serverlessetlframeworkteststack6)
 arn_value=$(echo $arn_value |jq '.StackResources[] | select(.ResourceType == "AWS::StepFunctions::StateMachine").PhysicalResourceId' | tr -d '"')
 
 execution_arn=$(aws stepfunctions start-execution --state-machine $arn_value --name $execution_name| jq .executionArn | tr -d '"')
