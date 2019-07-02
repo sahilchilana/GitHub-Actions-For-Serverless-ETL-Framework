@@ -16,7 +16,6 @@ execution_arn=$(aws stepfunctions start-execution --state-machine $arn_value --n
 sleep 30s
 
 output=$(aws stepfunctions describe-execution --execution-arn $execution_arn)
-echo $output
 output=$(echo $output| jq .status| tr -d '"')
 
 echo "Output='$output'"
