@@ -26,5 +26,6 @@ if [ "$output" == "SUCCEEDED" ]; then
 else
   echo "Test Failed"
   python send_email.py $output
+  exit 1
 
 fi
